@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Neon Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+      background-color: #111;
+      scroll-behavior: smooth;
+    }
+
+    /* Navigation Bar Styles */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      background-color: #222;
+      padding: 1rem;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      margin: 0 0.5rem;
+      border-radius: 5px;
+      transition: background-color 0.3s ease-in-out;
+    }
+
+    nav a:hover {
+      background-color: #f0f;
+      color: #000;
+    }
+
+    /* Page Styles */
+    .page {
+      min-height: 100vh;
+      padding: 2rem;
+      color: #fff;
+    }
+
+    .neon-text {
+      font-size: 3rem;
+      text-shadow: 0 0 10px #f0f;
+    }
+
+    /* Home Page Styles */
+    #home {
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+    }
+
+    #home .left-section {
+      width: 50%;
+      text-align: left;
+      padding-left: 20px;
+    }
+
+    #home .right-section {
+      width: 50%;
+      text-align: center;
+    }
+
+    #home .right-section img {
+      width: 40%; /* Adjust the image size as needed */
+      border-radius: 10px;
+      animation: neon-image-animation 2s alternate infinite;
+    }
+
+    .neon-heading {
+      font-size: 3rem;
+      text-shadow: 0 0 10px #f0f;
+      animation: neon-text-animation 1s alternate infinite;
+    }
+
+    .neon-subheading {
+      font-size: 1.5rem;
+      text-shadow: 0 0 10px #0ff;
+      animation: neon-subheading-animation 1s alternate infinite;
+    }
+
+    /* Home Page Buttons */
+    .buttons-container {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      margin-top: 30px;
+    }
+
+    .button {
+      padding: 10px 20px;
+      margin: 0 10px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease-in-out;
+      animation: neon-button-animation 1s alternate infinite;
+    }
+
+    .button:hover {
+      background-color: #011c38;
+    }
+
+    /* Projects Page Styles */
+    #projects {
+      background-color: #000;
+    }
+
+    .projects {
+      display: flex;
+      justify-content: center;
+    }
+
+    .project-heading {
+      font-size: 3.5rem;
+      text-shadow: 0 0 10px #f0f;
+      margin-top: 100px;
+    }
+
+    .project-card {
+      width: 300px;
+      height: 300px;
+      background-color: #222;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 20px;
+      box-shadow: 0 0 20px rgba(240, 0, 240, 0.8);
+      transition: transform 0.3s ease-in-out;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .project-card:hover {
+      transform: scale(1.1);
+    }
+
+    /* Certifications Page Styles */
+    #certifications {
+      background-color: #222;
+    }
+
+    .certifications {
+      display: flex;
+      justify-content: center;
+    }
+
+    .certifications-heading {
+      font-size: 2.5rem;
+      text-shadow: 0 0 10px #ff0;
+      margin-top: 105px;
+    }
+
+    .certificate-card {
+      width: 300px;
+      height: 350px;
+      background-color: #222;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 20px;
+      box-shadow: 0 0 20px rgba(240, 0, 240, 0.8);
+      transition: transform 0.3s ease-in-out;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .certificate-card img {
+      max-width: 100%;
+      max-height: 100%;
+      border-radius: 10px;
+    }
+
+    .certificate-card:hover {
+      transform: scale(1.1);
+    }
+
+    /* Contact Page Styles */
+    #contact {
+      background-color: #000;
+    }
+
+    .contact-form {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(240, 0, 240, 0.8);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-top: 100px;
+    }
+
+    .contact-form h2 {
+      font-size: 3.5rem;
+      text-shadow: 0 0 10px #f90;
+      margin-top: 120px;
+    }
+
+    .input-group {
+      margin-bottom: 20px;
+    }
+
+    .input-group label {
+      display: block;
+      font-size: 1.2rem;
+      color: #fff;
+    }
+
+    .input-group input,
+    .input-group textarea {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #222;
+      color: #fff;
+    }
+
+    .input-group textarea {
+      resize: vertical;
+    }
+
+    .input-group button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease-in-out;
+      animation: neon-button-animation 1s alternate infinite;
+    }
+
+    .input-group button:hover {
+      background-color: #011c38;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem 0;
+      background-color: #000;
+      color: #fff;
+    }
+
+    /* Neon Colors */
+    .neon-pink {
+      color: #f0f;
+    }
+
+    .neon-blue {
+      color: #0ff;
+    }
+
+    .neon-green {
+      color: #0f0;
+    }
+
+    .neon-orange {
+      color: #f90;
+    }
+
+    .neon-yellow {
+      color: #ff0;
+    }
+
+    /* Animations */
+    @keyframes neon-text-animation {
+      0% {
+        text-shadow: 0 0 10px #f0f;
+      }
+      100% {
+        text-shadow: 0 0 20px #f0f;
+      }
+    }
+
+    @keyframes neon-subheading-animation {
+      0% {
+        text-shadow: 0 0 10px #0ff;
+      }
+      100% {
+        text-shadow: 0 0 20px #0ff;
+      }
+    }
+
+    @keyframes neon-image-animation {
+      0% {
+        box-shadow: 0 0 10px rgba(240, 0, 240, 0.8);
+      }
+      100% {
+        box-shadow: 0 0 20px rgba(240, 0, 240, 0.8);
+      }
+    }
+
+    @keyframes neon-button-animation {
+      0% {
+        box-shadow: 0 0 10px #007bff;
+        background-color: #007bff;
+        color: #fff;
+      }
+      100% {
+        box-shadow: 0 0 20px #011c38;
+        background-color: #011c38;
+        color: #f0f;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#projects">Projects</a>
+    <a href="#certifications">Certifications</a>
+    <a href="#contact">Contact</a>
+    <a href="https://www.linkedin.com/in/sahil-prajapati-307069176/" target="_blank" style="margin-left: 10px;"><i class="fab fa-linkedin neon-blue" style="font-size: 20px;"></i></a>
+  </nav>
+
+  <!-- Page 1 - Home -->
+  <div class="page" id="home" style="background-color: #111;">
+    <div class="left-section">
+      <h1 class="neon-text animated">Hi, I'm Sahil Prajapati</h1>
+      <p class="neon-subheading animated">Web Developer | Frontend Enthusiast</p>
+      <p class="animated">I am a versatile web developer and frontend enthusiast. With a passion for creating seamless user experiences, I thrive on delivering innovative designs and captivating websites. From responsive layouts to performance optimization, excellence is my mantra.</p>
+      <div class="buttons-container">
+        <a href="mailto:sahilprajapati324@gmail.com"><button class="button">Download CV</button></a>
+        <a href="mailto:sahilprajapati324@gmail.com"><button class="button">Hire Me</button></a>
+      </div>
+    </div>
+    <div class="right-section">
+      <img src="image.jpg" alt="Background Image">
+    </div>
+  </div>
+
+  <!-- Page 2 - Projects -->
+  <div class="page" id="projects">
+    <h2 class="neon-pink project-heading" style="text-align: center; margin-top: 100px;">My Projects</h2>
+    <div class="projects">
+      <div class="project-card">
+        <h3 class="neon-blue">Responsive Portfolio Website</h3>
+        <p>Create a fully responsive portfolio website showcasing your web development skills. Utilize HTML, CSS, and JavaScript to build an interactive and visually appealing website that adapts seamlessly to various screen sizes. Implement features like smooth scrolling, navigation bar, project showcase, and a contact form..</p>
+      </div>
+      <div class="project-card">
+        <h3 class="neon-green">Memory Game</h3>
+        <p>Develop a classic Memory Game using HTML, CSS, and JavaScript. The game should have a grid of cards, each displaying an image or icon. Players need to flip two cards at a time to find matching pairs. Use JavaScript for game logic, card flipping animation, and tracking the player's score and progress.</p>
+      </div>
+      <div class="project-card">
+        <h3 class="neon-orange">Weather App</h3>
+        <p>Build a weather application using HTML, CSS, and JavaScript that fetches weather data from an API and displays it to users. Users can input their location or allow the app to access their current location. The app should show real-time weather information like temperature, humidity, and weather conditions, along with attractive icons and animations.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Page 3 - Certifications -->
+  <div class="page" id="certifications" style="background-color: #222;">
+    <h2 class="neon-yellow certifications-heading" style="text-align: center; margin-top: 105px;">Certifications</h2>
+    <div class="certifications">
+      <div class="certificate-card">
+        <img src="cert1.png" alt="Certificate 1">
+      </div>
+      <div class="certificate-card">
+        <img src="cert2.png" alt="Certificate 2">
+      </div>
+      <div class="certificate-card">
+        <img src="cert3.png" alt="Certificate 3">
+      </div>
+      <div class="certificate-card">
+        <img src="cert4.png" alt="Certificate 4">
+      </div>
+    </div>
+  </div>
+
+  <!-- Page 4 - Contact -->
+  <div class="page" id="contact">
+    <h2 class="neon-orange" style="text-align: center; margin-top: 120px;">Contact Me</h2>
+    <div class="contact-form animated">
+      <form action="" method="post">
+        <div class="input-group">
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div class="input-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div class="input-group">
+          <label for="message">Message:</label>
+          <textarea id="message" name="message" rows="4" required></textarea>
+        </div>
+        <div class="input-group">
+          <button type="submit">Send Message</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; © 2023 Sahil Prajapati. All rights reserved..</p>
+  </footer>
+</body>
+</html>
